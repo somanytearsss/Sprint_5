@@ -6,7 +6,7 @@
 
 1. Клонирование репозитория
 
-```git clone https://github.com/somanytearsss/Sprint_5.git)```
+```git clone https://github.com/somanytearsss/Sprint_5.git ```
 
 2. Создание виртуального окружения
 
