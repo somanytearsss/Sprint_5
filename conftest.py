@@ -122,5 +122,4 @@ def register_new_account(driver):
     WebDriverWait(driver, timeout=4).until(
         EC.visibility_of_element_located(Locators.button_entrance)
     )
-
     return driver, email, password
