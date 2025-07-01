@@ -1,28 +1,29 @@
 import pytest
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from conftest import register_new_account
-from locators import Locators
 from curl import *
+from locators import Locators
+from data import Credential
 
+@pytest.mark.usefixtures("start_from_main_not_login")
+class TestCheckingCreationExistingAccount:
+    def test_existing_accounts(self, driver, start_from_main_not_login):
+        driver = start_from_main_not_login
+        driver.maximize_window()
 
-@pytest.mark.usefixtures("register_new_account")
-class TestCheckNewRegister:
-    def test_registration(self):
-        driver, email, password = register_new_account
+        # Кликаем по ссылке "Зарегистрироваться"
+        driver.find_element(*Locators.inscription_login).click()
 
-        # Находим поле "email" и заполняем его
-        driver.find_element(*Locators.field_email).send_keys(email)
+        # Заполняем поле "Имя"
+        driver.find_element(*Locators.field_name).send_keys(Credential.name)
 
-        # Находим поле "Пароль" и заполняем его
-        driver.find_element(*Locators.field_password).send_keys(password)
+        # Заполняем поле "Email"
+        driver.find_element(*Locators.field_email).send_keys(Credential.email)
 
-        # Кликаем по кнопке "Войти"
-        driver.find_element(*Locators.button_entrance).click()
+        # Заполняем поле "Пароль"
+        driver.find_element(*Locators.field_password).send_keys(Credential.password)
 
-        # Ждем перехода на главную страницу
-        WebDriverWait(driver, timeout=10).until(EC.url_to_be(main_site)
-        )
+        # Кликаем кнопку "Зарегистрироваться"
+        driver.find_element(*Locators.button_register).click()
 
-    # Проверяем успешную авторизацию
-        assert driver.current_url == main_site
+        assert WebDriverWait(driver, timeout=5).until(EC.visibility_of_element_located(Locators.inscription_error_account))
