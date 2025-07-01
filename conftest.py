@@ -30,7 +30,7 @@ def start_from_login_page(driver):
 
 @pytest.fixture
 def start_from_recovery_page(driver):
-    login_page = login_site  # Предполагается существование переменной recovery_site
+    login_page = login_site  # Предполагается существование переменной login_site
     driver.get(login_page)
 
     # Кликаем по кнопке "восстановить пароль"
