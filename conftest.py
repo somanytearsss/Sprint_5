@@ -8,7 +8,7 @@ from geniration_ep import EmailPasswordGenerator
 from data import Credential
 
 
-@pytest.fixture  # 45 usages
+@pytest.fixture
 def driver():
     driver = webdriver.Chrome()
     driver.maximize_window()
@@ -16,7 +16,7 @@ def driver():
     driver.quit()
 
 
-@pytest.fixture  # 12 usages
+@pytest.fixture
 def start_from_login_page(driver):
     login_page = login_site
     driver.get(login_page)
@@ -28,7 +28,7 @@ def start_from_login_page(driver):
 
     return driver
 
-@pytest.fixture  # 2 usages
+@pytest.fixture
 def start_from_recovery_page(driver):
     login_page = login_site  # Предполагается существование переменной recovery_site
     driver.get(login_page)
@@ -52,7 +52,7 @@ def start_from_recovery_page(driver):
     return driver
 
 
-@pytest.fixture  # 2 usages
+@pytest.fixture
 def start_from_main_page(driver):
     main_page = main_site
     driver.get(main_page)
@@ -85,7 +85,7 @@ def start_from_register_page(driver):
 
     return driver
 
-@pytest.fixture  # 6 usages
+@pytest.fixture
 def start_from_main_not_login(driver):
     login_page = login_site
     driver.get(login_page)
