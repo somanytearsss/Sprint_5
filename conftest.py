@@ -3,7 +3,7 @@ from selenium import webdriver
 from curl import *
 from locators import Locators
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
 from geniration_ep import EmailPasswordGenerator
 from data import Credential
 
@@ -51,7 +51,6 @@ def start_from_recovery_page(driver):
 
     return driver
 
-
 @pytest.fixture
 def start_from_main_page(driver):
     main_page = main_site
@@ -82,6 +81,20 @@ def start_from_register_page(driver):
     driver.find_element(*Locators.field_email).send_keys(Credential.email)
     driver.find_element(*Locators.field_password).send_keys(Credential.password)
     driver.find_element(*Locators.button_entrance).click()
+
+    return driver
+
+@pytest.fixture
+def start_from_main_not_login(driver):
+    login_page = login_site
+    driver.get(login_page)
+
+    return driver
+
+@pytest.fixture
+def start_from_site_not_login(driver):
+    login_page = register_site
+    driver.get(login_page)
 
     return driver
 
