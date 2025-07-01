@@ -211,7 +211,6 @@ modules.xml
 .idea/findbugs-idea.xml
 .idea/externalDependencies.xml
 .idea/pythonPackages.xml
-.idea/jsLibraryMappings.xml
 .idea/webServers.xml
 .idea/gradle.xml
 .idea/aws.xml
