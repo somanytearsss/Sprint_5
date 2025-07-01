@@ -1,7 +1,6 @@
 import random
 import string
 
-
 class EmailPasswordGenerator:  # 4 usages
     def __init__(self):
         self.email = None
