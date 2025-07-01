@@ -1,37 +1,65 @@
 from selenium.webdriver.common.by import By
 
-class EnterLocators:
-    # вход по кнопке «Войти в аккаунт» на главной
-    ENTER_MAIN = By.XPATH, "//button[contains(@class,'button_button__33qZ0')]"
-    # поле Имя на странице registration
-    NAME_FIELD = By.XPATH, "//label[contains(@class, 'input__placeholder') and contains(text(), 'Имя')]/following::input[1]"
-    # поле Email на странице login и registration
-    EMAIL_FIELD = By.XPATH, "//label[contains(@class, 'input__placeholder') and contains(text(), 'Email')]/following::input[1]"
-    # поле Пароль на странице login и registration
-    PASSWORD_FIELD = By.XPATH, "//label[contains(@class, 'input__placeholder') and contains(text(), 'Пароль')]/following::input[1]"
-    # кнопка сделать заказ
-    ORDER_BUTTON = By.XPATH, "//button[contains(@class,'button_button__33qZ0')]"
-    # ссылка на личный кабинет в хидере
-    PERSONAL_ACCOUNT_BUTTON = By.XPATH, "//a[contains(@class, 'AppHeader_header__link__3D_hX' ) and @href='/account']"
-    # кнопка Войти на странице регистрации и восстановления пароля
-    LOG_IN_BUTTON_REGISTRATION_AND_RECOVERY_FORM = By.XPATH,"//a[@class = 'Auth_link__1fOlj']"
-    # ошибка некорректный пароль
-    INCORRECT_PASSWORD = By.XPATH, "//form//div[contains(@class, 'input_status_error')]"
-    # ссылка на конструктор в хидере
-    CONSTRUCTOR_HEADER = By.XPATH, "//p[contains(@class, 'AppHeader_header__linkText__3q_va' ) and text()='Конструктор']"
-    # ссылка на логотип стеллар бургер в хидере
-    STELLAR_BURGER_HEADER = By.XPATH,  "//div[@class='AppHeader_header__logo__2D0X2']"
-    # кнопка выход в личном кабинете
-    EXIT_BUTTON_IN_PERSONAL_CABINET = By.XPATH, "//button[contains(@class,'Account_button__14Yp3')]"
-    # вкладка Булки в конструкторе
-    BREADS_TAB = By.XPATH, "//span[text()='Булки']"
-    # активная вкладка Булки в конструкторе
-    CURRENT_BREADS_TAB = By.XPATH, "//div[contains(@class, 'tab_tab_type_current__2BEPc')] //span[text()='Булки']"
-    # вкладка Соусы в конструкторе
-    SAUCES_TAB = By.XPATH, "//span[text()='Соусы']"
-    # активная вкладка Соусы в конструкторе
-    CURRENT_SAUCES_TAB = By.XPATH, "//div[contains(@class, 'tab_tab_type_current__2BEPc')] //span[text()='Соусы']"
-    # вкладка Начинки в конструкторе
-    TOPPINGS_TAB = By.XPATH, "//span[text()='Начинки']"
-    # активная вкладка Начинки в конструкторе
-    CURRENT_TOPPINGS_TAB = By.XPATH, "//div[contains(@class, 'tab_tab_type_current__2BEPc')] //span[text()='Начинки']"
+class Locators:
+    # Кнопка "Войти в аккаунт" на главной странице
+    entrance_on_the_main = (By.XPATH, "//button[text()='Войти в аккаунт']")
+
+    # Основное лого
+    logo = (By.XPATH, '//header/nav/div')
+
+    # Надпись "выход"
+    button_exit = (By.XPATH, ".//button[contains(text(), 'Выход')]")
+
+    # Надпись "профиль"
+    inscription_profile = (By.XPATH, './/a[@href="/account/profile"]')
+
+    # Надпись "булки"
+    inscription_bread = (By.XPATH, ".//span[contains(text(), 'Булки')]")
+
+    # Кнопка/надпись "личный кабинет"
+    button_personal_area = (By.XPATH, ".//p[contains(text(), 'Личный Кабинет')]")
+
+    # Надпись "Соусы"
+    inscription_sauce = (By.XPATH, ".//span[contains(text(), 'Соусы')]")
+
+    # Надпись "Зарегистрироваться"
+    inscription_login = (By.CLASS_NAME, "Auth_link__if01j")
+
+    # Раздел "Начинки"
+    inscription_fillings = (By.XPATH, ".//span[contains(text(), 'Начинки')]")
+
+    # Активный раздел с начинками
+    active_section = (By.XPATH, '//div[contains(@class, "tab_tab_type_current")]')
+
+    # Надпись "Такой пользователь уже существует"
+    inscription_error_account = (By.XPATH, "./p[contains(text(),'Такой пользователь уже существует")
+
+    # Надпись "Некорректный пароль"
+    inscription_error_password = (By.XPATH, "//div[contains(@class, 'input_status_error')]")
+
+    # Кнопка "восстановить пароль"
+    button_restore_password = (By.XPATH, ".//a[@href='/forgot-password']")
+
+    # Кнопка-надпись "войти"
+    inscription_button_entrance = (By.XPATH, ".//a[@href='/login']")
+
+    # Кнопка "Войти"
+    button_entrance = (By.XPATH, ".//button[contains(text(), 'Войти')]")
+
+    # Кнопка "Оформить заказ"
+    button_arrange_order = (By.XPATH, ".//button[contains(text(), 'Оформить заказ')]")
+
+    # Кнопка "Зарегистрироваться"
+    button_register = (By.XPATH, ".//button[contains(text(), 'Зарегистрироваться')]")
+
+    # Кнопка "конструктор"
+    button_constructor = (By.XPATH, ".//a[@href='/']")
+
+    # Поле "Имя"
+    field_name = (By.XPATH, "//div[label[contains(text(), 'Имя')]]//input")
+
+    # Поле "email"
+    field_email = (By.XPATH, "//div[label[contains(text(), 'Email')]]//input")
+
+    # Поле "Пароль"
+    field_password = (By.XPATH, "//div[label[contains(text(), 'Пароль')]]//input")
