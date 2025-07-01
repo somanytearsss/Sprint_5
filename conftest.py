@@ -86,21 +86,6 @@ def start_from_register_page(driver):
     return driver
 
 @pytest.fixture
-def start_from_main_not_login(driver):
-    login_page = login_site
-    driver.get(login_page)
-
-    return driver
-
-
-@pytest.fixture
-def start_from_site_not_login(driver):
-    login_page = main_site
-    driver.get(login_page)
-
-    return driver
-
-@pytest.fixture
 def register_new_account(driver):
     login_page = login_site
     driver.get(login_page)
