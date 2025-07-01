@@ -89,4 +89,5 @@ def start_from_register_page(driver):
 def start_from_main_not_login(driver):
     login_page = login_site
     driver.get(login_page)
+    
     return driver
