@@ -89,5 +89,40 @@ def start_from_register_page(driver):
 def start_from_main_not_login(driver):
     login_page = login_site
     driver.get(login_page)
-    
+
     return driver
+
+
+@pytest.fixture
+def start_from_site_not_login(driver):
+    login_page = main_site
+    driver.get(login_page)
+
+    return driver
+
+@pytest.fixture
+def register_new_account(driver):
+    login_page = login_site
+    driver.get(login_page)
+
+    # Кликаем по надписи "Зарегистрироваться"
+    driver.find_element(*Locators.inscription_login).click()
+
+    # Генерация email и password
+    generator = EmailPasswordGenerator()
+    email, password = generator.generate()
+
+    # Заполняем форму регистрации
+    driver.find_element(*Locators.field_name).send_keys(Credential.name)
+    driver.find_element(*Locators.field_email).send_keys(email)
+    driver.find_element(*Locators.field_password).send_keys(password)
+
+    # Кликаем на кнопку "Зарегистрироваться"
+    driver.find_element(*Locators.button_register).click()
+
+    # Ждем появления кнопки "Войти" (подтверждение успешной регистрации)
+    WebDriverWait(driver, timeout=4).until(
+        EC.visibility_of_element_located(Locators.button_entrance)
+    )
+
+    return driver, email, password
