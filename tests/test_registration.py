@@ -1,3 +1,4 @@
+from conftest import *
 import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -5,7 +6,6 @@ from curl import *
 from geniration_ep import EmailPasswordGenerator
 from locators import Locators
 from data import Credential
-from conftest import *
 
 @pytest.mark.usefixtures("start_from_main_not_login")
 class TestCheckingCreationExistingAccount:
