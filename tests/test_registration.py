@@ -5,6 +5,7 @@ from curl import *
 from geniration_ep import EmailPasswordGenerator
 from locators import Locators
 from data import Credential
+from conftest import *
 
 @pytest.mark.usefixtures("start_from_main_not_login")
 class TestCheckingCreationExistingAccount:
